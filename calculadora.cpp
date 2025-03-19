@@ -13,7 +13,7 @@ public:
     Calculadora(float a,float b,float c);
     Calculadora();
     ~Calculadora();
-    float convertirMwaW(float n);
+    float convertirdBWaW(float n);
     float calcular();
 };
 
@@ -35,8 +35,8 @@ Calculadora::~Calculadora()
 {
 }
 
-float Calculadora::convertirMwaW(float n){
-    return n/1000;
+float Calculadora::convertirdBWaW(float n){
+    return pow(10,n/10);
 }
 
 float Calculadora::calcular(){
@@ -47,20 +47,26 @@ float Calculadora::calcular(){
 }
 main(){
     float a=0,b=0,c=0;
-    cout<<"Ingrese el valor de B en decibell wats"<<endl;
+    cout<<"---------------------------------------"<<endl;
+    cout<<"\tCalculadora de potencia"<<endl;
+    cout<<"---------------------------------------"<<endl;
+    cout<<"Ingrese el valor de B en decibell wats:"<<endl;
     cin>>b;
 
-    cout<<"Ingrese el valor de A en decibell wats"<<endl;
+    cout<<"Ingrese el valor de A en decibell wats:"<<endl;
     cin>>a;
 
-    cout<<"Ingrese el valor de C en decibells"<<endl;
+    cout<<"Ingrese el valor de C en decibells:"<<endl;
     cin>>c;
 
     // Crear un objeto de la clase Calculadora
     Calculadora calc(a, b, c);
 
+    float potencia = calc.calcular();
+    float potenciaW = calc.convertirdBWaW(potencia);
 
-    cout<<"La potencia es de: "<<calc.calcular()<<" dBW"<<endl;
+    cout<<"La potencia es de: "<<potencia<<" dBW"<<endl;
+    cout<<"La potencia es de: "<<potenciaW<<" W"<<endl;
 
 }
 
